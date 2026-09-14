@@ -1,24 +1,30 @@
-# Python virtual environment
-venv/
-.venv/
-env/
+# Python Virtual Environments (har folder ke liye)
+**/venv/
+**/.venv/
+**/env/
 
-# Byte-compiled / cache files
-__pycache__/
-*.py[cod]
-*$py.class
+# Python Cache & Compiled Files
+**/__pycache__/
+**/*.pyc
+**/*.pyo
 
-# SQLite local database
-Session 1/db.sqlite3
-db.sqlite3-journal
-
-# PyCharm / IDE settings
+# PyCharm & VS Code IDE files (Workspace warnings ko rokne ke liye)
 .idea/
+**/.idea/
 .vscode/
+**/.vscode/
+*.xml
+*.iml
 
-# Media uploads (user files)
-/media/
+# Har session ke Django SQLite Databases
+**/*.sqlite3
+**/*.sqlite3-journal
+**/db.sqlite3
 
-# Log files
-*.log
+# User media uploads & logs
+**/media/
+**/*.log
 
+# OS generated files
+.DS_Store
+Thumbs.db
