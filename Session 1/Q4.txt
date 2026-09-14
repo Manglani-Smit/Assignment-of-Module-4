@@ -1,0 +1,9 @@
+manage.py: This is the main control file we use in the terminal to run our project. We use it to start the server (runserver), apply database changes (migrate), and create new apps (startapp).
+
+settings.py: This is the configuration file for the whole project. It stores important settings like database connections, installed apps, secret keys, and template folders.
+
+urls.py: This file acts like a router or map for the website. It takes the URL typed in the browser and points it to the correct view function or page.
+
+wsgi.py: This file is used when we deploy our project online to a standard live web server so the server and Django can communicate.
+
+asgi.py: Similar to wsgi.py, but it helps run asynchronous and real-time features like live chats and instant notifications.

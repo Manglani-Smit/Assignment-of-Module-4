@@ -1,0 +1,7 @@
+Django and Flask are both popular Python web frameworks, but they work quite differently:
+
+Features: Django comes with everything built-in right from the start, such as an admin panel, database support (ORM), and a user authentication system. Flask is a lightweight micro-framework that only gives you the basics, meaning you have to install external packages for things like databases and logins.
+
+Best Use Case: Flask is great for small websites, quick prototypes, or simple APIs. Django is much better for large, database-heavy websites that need a solid structure.
+
+Daily App Example (Zomato): For an app like Zomato, Django is the clear winner. Zomato deals with massive amounts of data (menus, restaurants, food orders, customer reviews), requires secure user accounts, and needs separate dashboards for restaurant owners. Since Django provides user login, database management, and an admin panel out of the box, building an app like Zomato with Django saves a lot of time and effort.
