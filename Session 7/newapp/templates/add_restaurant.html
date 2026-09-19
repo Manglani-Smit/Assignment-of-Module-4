@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Restaurant</title>
+</head>
+<body>
+
+<h1>Add Restaurant</h1>
+
+{% if msg %}
+<b style="color: green;">
+    {{ msg }}
+</b>
+{% endif %}
+
+<form method="post" action="{% url 'add_restaurant' %}">
+    {% csrf_token %}
+    <table>
+        <tr>
+            <td>Restaurant Name</td>
+            <td><input type="text" name="name" placeholder="Enter restaurant name" required></td>
+        </tr>
+        <tr>
+            <td>Cuisine</td>
+            <td><input type="text" name="cuisine" placeholder="e.g. Italian, Indian" required></td>
+        </tr>
+        <tr>
+            <td>Rating</td>
+            <td><input type="number" step="0.1" name="rating" placeholder="1.0 to 5.0" required></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" value="Save Restaurant" class="btn btn-primary">
+            </td>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>
