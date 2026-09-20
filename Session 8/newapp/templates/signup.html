@@ -1,0 +1,50 @@
+{% extends 'header.html' %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+</head>
+<body>
+
+<h1>Welcome To Signup</h1>
+{%if msg%}
+<b style="color: gold;">
+    {{msg}}
+</b>
+{%endif%}
+<form method="post" action="{% url 'signup' %}"> {% csrf_token %}
+    <table>
+        <tr>
+            <td>Username</td>
+            <td><input type="text" name="fname"></td>
+        </tr>
+
+
+        <tr>
+            <td>Email</td>
+            <td><input type="email" name="email"></td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><input type="password" name="password"> </td>
+        </tr>
+        <tr>
+            <td>Confirm Password</td>
+            <td><input type="password" name="cpassword"> </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" value="SIGN UP" class="btn btn-primary">
+            </td>
+        </tr>
+    </table>
+
+</form>
+</body>
+</html>
+{% endblock %}
