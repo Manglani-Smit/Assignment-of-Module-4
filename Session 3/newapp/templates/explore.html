@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-bold">Trending Playlists</h2>
+</div>
+
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    <!-- Card 1 -->
+    <div class="col">
+        <div class="card h-100 shadow-sm border-0">
+            <img src="https://picsum.photos/seed/pop/400/250" class="card-img-top" alt="Today's Top Hits">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">Today's Top Hits</h5>
+                <p class="card-text text-muted">The hottest tracks right now across the global charts.</p>
+                <a href="#" class="btn btn-outline-primary btn-sm">Listen Now</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="col">
+        <div class="card h-100 shadow-sm border-0">
+            <img src="https://picsum.photos/seed/lofi/400/250" class="card-img-top" alt="Lo-Fi Chill Beats">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">Lo-Fi Chill Beats</h5>
+                <p class="card-text text-muted">Calm, instrumental beats to help you study, work, and relax.</p>
+                <a href="#" class="btn btn-outline-primary btn-sm">Listen Now</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="col">
+        <div class="card h-100 shadow-sm border-0">
+            <img src="https://picsum.photos/seed/rock/400/250" class="card-img-top" alt="Rock Classics">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">Rock Classics</h5>
+                <p class="card-text text-muted">Legendary guitar riffs and timeless rock anthems.</p>
+                <a href="#" class="btn btn-outline-primary btn-sm">Listen Now</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="col">
+        <div class="card h-100 shadow-sm border-0">
+            <img src="https://picsum.photos/seed/punjabi/400/250" class="card-img-top" alt="Punjabi Beats">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">Punjabi Hits</h5>
+                <p class="card-text text-muted">High-energy bhangra and desi hip-hop bangers.</p>
+                <a href="#" class="btn btn-outline-primary btn-sm">Listen Now</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="col">
+        <div class="card h-100 shadow-sm border-0">
+            <img src="https://picsum.photos/seed/acoustic/400/250" class="card-img-top" alt="Acoustic Morning">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">Acoustic Morning</h5>
+                <p class="card-text text-muted">Warm, unplugged melodies to kickstart your day.</p>
+                <a href="#" class="btn btn-outline-primary btn-sm">Listen Now</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="col">
+        <div class="card h-100 shadow-sm border-0">
+            <img src="https://picsum.photos/seed/electronic/400/250" class="card-img-top" alt="EDM Energy">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">Dance & EDM Blast</h5>
+                <p class="card-text text-muted">Electrifying drops and festival beats for your workout.</p>
+                <a href="#" class="btn btn-outline-primary btn-sm">Listen Now</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

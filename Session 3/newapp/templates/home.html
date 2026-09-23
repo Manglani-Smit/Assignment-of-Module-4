@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="p-5 mb-4 bg-light rounded-3 shadow-sm text-center">
+    <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">Welcome to MusicZone!</h1>
+        <p class="fs-4 text-muted">Discover top trending playlists, tracks, and artists tailored just for you.</p>
+        <a href="{% url 'explore' %}" class="btn btn-primary btn-lg mt-3">Start Exploring</a>
+    </div>
+</div>
+{% endblock %}

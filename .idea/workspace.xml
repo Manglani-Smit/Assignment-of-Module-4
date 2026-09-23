@@ -5,15 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7bef4ef2-0704-4961-892f-4ffc1cc106f3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Session 8/newapp/templates/header.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Session 8/newapp/templates/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Session 8/newapp/templates/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Session 8/newapp/templates/signup.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Session 3/newapp/static/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Session 3/newapp/templates/base.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Session 3/newapp/templates/explore.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Session 3/newapp/templates/home.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Session 3/newapp/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Session 8/newapp/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/Session 8/newapp/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Session 8/newapp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Session 8/newapp/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Session 8/newapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Session 8/newapp/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Session 8/newproject/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Session 8/newproject/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,7 +20,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Dockerfile" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
