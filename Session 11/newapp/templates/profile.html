@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}My Profile - MusicZone{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-7">
+        <div class="card shadow-sm border-0 rounded-3 p-4">
+            <h3 class="fw-bold text-center mb-3">User Profile</h3>
+
+            {% if msg %}
+                <div class="alert alert-success py-2 text-center" role="alert">
+                    {{ msg }}
+                </div>
+            {% endif %}
+
+            <div class="text-center mb-4">
+                {% if profile.profile_pic %}
+                    <img src="{{ profile.profile_pic.url }}" alt="Profile Picture" class="rounded-circle shadow-sm border border-3 border-light" style="width: 120px; height: 120px; object-fit: cover;">
+                {% else %}
+                    <img src="https://ui-avatars.com/api/?name={{ user.fname }}+{{ user.lname }}&background=0d6efd&color=fff&size=120" alt="Default Avatar" class="rounded-circle shadow-sm border border-3 border-light" style="width: 120px; height: 120px; object-fit: cover;">
+                {% endif %}
+                <h4 class="mt-2 mb-0">{{ user.fname }} {{ user.lname }}</h4>
+                <small class="text-muted">{{ user.email }}</small>
+            </div>
+
+            <form action="{% url 'profile' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-semibold">First Name</label>
+                        <input type="text" class="form-control" name="fname" value="{{ user.fname }}" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-semibold">Last Name</label>
+                        <input type="text" class="form-control" name="lname" value="{{ user.lname }}" required>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Email Address (Read-Only)</label>
+                    <input type="email" class="form-control bg-light" value="{{ user.email }}" readonly>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Mobile Number</label>
+                    <input type="tel" class="form-control" name="mobile" maxlength="10" value="{{ profile.phone_number|default:'' }}" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Change Profile Picture</label>
+                    <input type="file" class="form-control" name="profile_picture" accept="image/*">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Address</label>
+                    <textarea class="form-control" name="address" rows="3">{{ profile.bio|default:'' }}</textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold">Update Profile</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

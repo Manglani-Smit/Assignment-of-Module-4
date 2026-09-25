@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Login - MusicZone{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+        <div class="card shadow-sm border-0 rounded-3 p-4">
+            <h3 class="fw-bold text-center mb-3">Login to MusicZone</h3>
+
+            {% if msg %}
+                <div class="alert alert-info py-2 text-center" role="alert">
+                    {{ msg }}
+                </div>
+            {% endif %}
+
+            <form action="{% url 'login' %}" method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Email Address</label>
+                    <input type="email" class="form-control" name="email" placeholder="name@example.com" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Password</label>
+                    <input type="password" class="form-control" name="password" placeholder="Password" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 py-2 mt-2 fw-semibold">Login</button>
+            </form>
+
+            <div class="text-center mt-3">
+                <small class="text-muted">Don't have an account? <a href="{% url 'signup' %}" class="text-decoration-none">Register here</a></small>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

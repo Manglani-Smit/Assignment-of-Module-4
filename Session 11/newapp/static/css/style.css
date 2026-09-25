@@ -1,0 +1,22 @@
+/* Task 4: Custom background color */
+body {
+    background-color: #f8f9fa;
+}
+
+/* Footer ko page ke bottom me rakhne ke liye */
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.content-wrapper {
+    flex: 1 0 auto;
+}
+
+footer {
+    flex-shrink: 0;
+}
