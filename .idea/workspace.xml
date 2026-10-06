@@ -4,7 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7bef4ef2-0704-4961-892f-4ffc1cc106f3" name="Changes" comment="" />
+    <list default="true" id="7bef4ef2-0704-4961-892f-4ffc1cc106f3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Session 6/newapp/templates/add_restaurant.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Session 6/newapp/templates/base.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Session 6/newapp/templates/change-password.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Session 6/newapp/templates/contact.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Session 6/newapp/templates/forgot-password.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Session 6/newapp/templates/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Session 6/newapp/templates/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Session 6/newapp/templates/new-password.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Session 6/newapp/templates/otp.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Session 6/newapp/templates/restaurant_success.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Session 6/newapp/templates/signup.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Session 6/newapp/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,8 +28,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Dockerfile" />
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -109,6 +123,11 @@
           <url>file://$PROJECT_DIR$/Session 8/newproject/urls.py</url>
           <line>16</line>
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Session 6/newapp/views.py</url>
+          <line>173</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

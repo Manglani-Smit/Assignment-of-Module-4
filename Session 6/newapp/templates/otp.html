@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Verify OTP - RestaurantApp{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-5">
+        <div class="card shadow-sm border-0 rounded-3 p-4">
+            <h3 class="fw-bold text-center mb-3">Enter OTP</h3>
+            <p class="text-center text-muted small mb-3">Check your email for the 4-digit verification code.</p>
+
+            {% if msg %}
+                <div class="alert alert-danger py-2 text-center" role="alert">
+                    {{ msg }}
+                </div>
+            {% endif %}
+
+            <form action="{% url 'verify_otp' %}" method="post">
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">4-Digit OTP</label>
+                    <input type="number" name="otp" class="form-control text-center fs-4 tracking-wide" placeholder="XXXX" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold">Verify</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

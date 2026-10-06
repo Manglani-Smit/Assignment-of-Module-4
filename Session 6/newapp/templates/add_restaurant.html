@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Restaurant{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-sm border-0 rounded-3 p-4">
+            <h3 class="fw-bold text-center mb-3">Add Restaurant</h3>
+
+            <!-- Task 3: Error Message directly above form fields -->
+            {% if msg %}
+                <div class="alert alert-danger py-2 text-center" role="alert">
+                    {{ msg }}
+                </div>
+            {% endif %}
+
+            <!-- Task 2 & 4: POST Method with CSRF Token -->
+            <form action="{% url 'add_restaurant' %}" method="post">
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Restaurant Name</label>
+                    <input type="text" name="restaurant_name" class="form-control" placeholder="Enter restaurant name" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Cuisine Type</label>
+                    <input type="text" name="cuisine_type" class="form-control" placeholder="e.g. Italian, Punjabi, Chinese" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Contact Email</label>
+                    <input type="text" name="contact_email" class="form-control" placeholder="Enter contact email" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold">Submit Restaurant</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

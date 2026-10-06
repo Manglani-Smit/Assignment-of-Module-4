@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - RestaurantApp{% endblock %}
+
+{% block content %}
+<div class="p-5 mb-4 bg-white rounded-3 shadow-sm text-center">
+    <div class="container-fluid py-4">
+        {% if request.session.fname %}
+            <h1 class="display-5 fw-bold">Welcome Back, {{ request.session.fname }}!</h1>
+            <p class="col-md-8 fs-5 mx-auto text-muted">Manage your restaurants, add new cuisines, or check contacts from your dashboard.</p>
+            <a href="{% url 'add_restaurant' %}" class="btn btn-primary btn-lg px-4 mt-2">Add New Restaurant</a>
+        {% else %}
+            <h1 class="display-5 fw-bold">Welcome to RestaurantApp</h1>
+            <p class="col-md-8 fs-5 mx-auto text-muted">Find top restaurants, submit your own listings, and get connected easily.</p>
+            <div class="mt-3">
+                <a href="{% url 'login' %}" class="btn btn-primary px-4 me-2">Login</a>
+                <a href="{% url 'signup' %}" class="btn btn-outline-secondary px-4">Sign Up</a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

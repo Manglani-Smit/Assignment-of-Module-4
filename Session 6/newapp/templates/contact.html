@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact Us - RestaurantApp{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-6">
+        <div class="card shadow-sm border-0 rounded-3 p-4 mb-4">
+            <h3 class="fw-bold mb-3">Contact Us</h3>
+
+            {% if msg %}
+                <div class="alert alert-success py-2 text-center" role="alert">
+                    {{ msg }}
+                </div>
+            {% endif %}
+
+            <form action="{% url 'contact' %}" method="post">
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Name</label>
+                    <input type="text" name="name" class="form-control" placeholder="Enter name" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Email</label>
+                    <input type="email" name="email" class="form-control" placeholder="Enter email" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Mobile</label>
+                    <input type="tel" name="mobile" maxlength="10" class="form-control" placeholder="Enter mobile" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Remarks</label>
+                    <textarea name="remarks" class="form-control" rows="3" placeholder="Write your message here" required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Recent 3 Contacts List -->
+    <div class="col-md-6">
+        <div class="card shadow-sm border-0 rounded-3 p-4">
+            <h4 class="fw-bold mb-3">Recent Inquiries</h4>
+            {% if contacts %}
+                <div class="list-group">
+                    {% for c in contacts %}
+                        <div class="list-group-item list-group-item-action mb-2 border rounded">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h6 class="mb-1 fw-bold">{{ c.name }}</h6>
+                                <small class="text-muted">{{ c.mobile }}</small>
+                            </div>
+                            <p class="mb-1 small">{{ c.remarks }}</p>
+                            <small class="text-muted">{{ c.email }}</small>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p class="text-muted">No contacts yet.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

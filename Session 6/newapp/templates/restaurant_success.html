@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Restaurant Submitted{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-sm border-0 rounded-3 p-4 text-center">
+            <h3 class="fw-bold text-success mb-3">Restaurant Submitted Successfully!</h3>
+            
+            <ul class="list-group list-group-flush text-start mb-4">
+                <li class="list-group-item">
+                    <strong>Restaurant Name:</strong> {{ data.restaurant_name }}
+                </li>
+                <li class="list-group-item">
+                    <strong>Cuisine Type:</strong> {{ data.cuisine_type }}
+                </li>
+                <li class="list-group-item">
+                    <strong>Contact Email:</strong> {{ data.contact_email }}
+                </li>
+            </ul>
+
+            <div>
+                <a href="{% url 'add_restaurant' %}" class="btn btn-outline-primary">Add Another Restaurant</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
