@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Order Confirmed</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f6f6f6; margin: 0; padding: 20px; color: #333; }
+        .card { max-width: 550px; margin: auto; background: #ffffff; border-radius: 10px; overflow: hidden; border: 1px solid #e0e0e0; }
+        .header { background-color: #fc8019; color: #ffffff; padding: 20px; text-align: center; }
+        .header h1 { margin: 0; font-size: 22px; }
+        .header p { margin: 5px 0 0; font-size: 14px; }
+        .content { padding: 20px; }
+        .meta-box { background-color: #fafafa; border-radius: 6px; padding: 12px; margin-bottom: 20px; font-size: 13px; line-height: 1.5; border: 1px solid #eee; }
+        .table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        .table th { text-align: left; font-size: 13px; color: #777; border-bottom: 1px solid #ddd; padding: 8px 4px; }
+        .table td { padding: 10px 4px; border-bottom: 1px solid #eee; font-size: 14px; }
+        .total-row td { border-top: 2px solid #333; border-bottom: none; font-weight: bold; font-size: 15px; padding-top: 12px; }
+        .footer { text-align: center; font-size: 12px; color: #999; padding: 15px; background-color: #fafafa; border-top: 1px solid #eee; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="header">
+            <h1>Order Confirmed!</h1>
+            <p>Preparing food at <strong>{{ order.restaurant_name }}</strong></p>
+        </div>
+        <div class="content">
+            <p>Hi <strong>{{ user_name }}</strong>,</p>
+            <p>Your order has been placed successfully.</p>
+
+            <div class="meta-box">
+                <strong>Order ID:</strong> #{{ order.order_id }}<br>
+                <strong>Delivery Address:</strong> {{ order.delivery_address }}
+            </div>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th style="text-align: center;">Qty</th>
+                        <th style="text-align: right;">Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in items %}
+                    <tr>
+                        <td>{{ item.item_name }}</td>
+                        <td style="text-align: center;">{{ item.quantity }}</td>
+                        <td style="text-align: right;">₹{{ item.subtotal }}</td>
+                    </tr>
+                    {% endfor %}
+                    <tr class="total-row">
+                        <td colspan="2">Total Paid</td>
+                        <td style="text-align: right;">₹{{ order.total_amount }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="footer">
+            <p>Thanks for ordering with us!</p>
+        </div>
+    </div>
+</body>
+</html>

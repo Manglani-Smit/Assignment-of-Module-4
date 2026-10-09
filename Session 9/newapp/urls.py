@@ -10,4 +10,6 @@ urlpatterns = [
     path('verify-otp/', views.verify_otp, name='verify_otp'),
     path('new-password/', views.new_password, name='new_password'),
     path('change-password/', views.change_password, name='change_password'),
+    path('test-order-mail/<str:user_email>/', views.send_order_confirmation_email, name='test_order_mail'),
+    path('test-ipl-mail/<str:user_email>/', views.send_ipl_welcome_email, name='test_ipl_mail'),
 ]

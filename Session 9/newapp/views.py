@@ -4,6 +4,9 @@ from django.http import HttpResponse
 from django.core.mail import send_mail
 from django.conf import settings
 import random
+from django.template.loader import render_to_string
+from django.core.mail import EmailMultiAlternatives
+from django.utils.html import strip_tags
 
 # Create your views here.
 
@@ -129,3 +132,55 @@ def change_password(request):
             return render(request, 'change-password.html', {'msg': msg})
     else:
         return render(request, 'change-password.html')
+
+def send_order_confirmation_email(request, user_email):
+    context = {
+        'user_name': 'Smit',
+        'order': {
+            'order_id': 'SWG-94821',
+            'restaurant_name': 'Biryani Blues',
+            'delivery_address': 'Flat 402, Sunshine Heights, Ahmedabad, Gujarat',
+            'total_amount': '620.00',
+        },
+        'items': [
+            {'item_name': 'Hyderabadi Chicken Biryani', 'quantity': 1, 'subtotal': '380.00'},
+            {'item_name': 'Mirchi Ka Salan (Extra)', 'quantity': 1, 'subtotal': '90.00'},
+            {'item_name': 'Gulab Jamun (2 Pcs)', 'quantity': 1, 'subtotal': '150.00'},
+        ]
+    }
+
+    subject = f"Order Placed: #{context['order']['order_id']} with {context['order']['restaurant_name']}"
+    html_content = render_to_string('order_confirmation.html', context)
+    text_content = strip_tags(html_content)
+
+    email = EmailMultiAlternatives(
+        subject=subject,
+        body=text_content,
+        from_email=settings.DEFAULT_FROM_EMAIL,
+        to=[user_email],
+    )
+    email.attach_alternative(html_content, "text/html")
+    email.send(fail_silently=False)
+
+    return HttpResponse(f"Order confirmation email sent to {user_email}")
+
+def send_ipl_welcome_email(request, user_email):
+    subject = "🏏 Toss Time is Near! Welcome to IPL Fantasy League 2026"
+    context = {
+        'user_name': 'Cricket Fan',
+        'fantasy_dashboard_url': 'https://yourapp.com/fantasy/leagues',
+    }
+
+    html_content = render_to_string('emails/ipl_welcome.html', context)
+    text_content = strip_tags(html_content)
+
+    email = EmailMultiAlternatives(
+        subject=subject,
+        body=text_content,
+        from_email=settings.DEFAULT_FROM_EMAIL,
+        to=[user_email],
+    )
+    email.attach_alternative(html_content, "text/html")
+    email.send(fail_silently=False)
+
+    return HttpResponse(f"IPL Fantasy League welcome email sent to {user_email}")
