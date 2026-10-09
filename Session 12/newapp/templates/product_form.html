@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Product - Flipkart Seller Hub</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f1f3f6;
+            color: #212121;
+        }
+        .navbar {
+            background-color: #2874f0;
+            color: #ffffff;
+            padding: 14px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .navbar h2 {
+            font-size: 20px;
+            font-style: italic;
+            font-weight: bold;
+        }
+        .container {
+            max-width: 540px;
+            margin: 40px auto;
+            background: #ffffff;
+            border-radius: 4px;
+            padding: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .header-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #f0f0f0;
+            color: #212121;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #333333;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 11px 14px;
+            border: 1px solid #dcdcdc;
+            border-radius: 3px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .form-group input:focus {
+            border-color: #2874f0;
+        }
+        .btn-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 26px;
+        }
+        .btn-submit {
+            flex: 1;
+            background-color: #fb641b;
+            color: #ffffff;
+            border: none;
+            padding: 13px;
+            font-size: 15px;
+            font-weight: 600;
+            border-radius: 2px;
+            cursor: pointer;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
+        .btn-submit:hover {
+            background-color: #e55613;
+        }
+        .btn-cancel {
+            flex: 1;
+            text-align: center;
+            background-color: #ffffff;
+            border: 1px solid #dcdcdc;
+            color: #212121;
+            padding: 12px;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 2px;
+            line-height: 1.4;
+        }
+        .btn-cancel:hover {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <h2>Flipkart Seller Hub</h2>
+    </div>
+
+    <div class="container">
+        <h3 class="header-title">Update Product</h3>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label for="name">Product Name</label>
+                <input type="text" id="name" name="name" value="{{ product.name }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="category">Category</label>
+                <input type="text" id="category" name="category" value="{{ product.category }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="price">Price (₹)</label>
+                <input type="number" id="price" name="price" value="{{ product.price }}" required>
+            </div>
+
+            <div class="btn-group">
+                <button type="submit" class="btn-submit">Update Product</button>
+                <a href="{% url 'product_list' %}" class="btn-cancel">Cancel</a>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>
