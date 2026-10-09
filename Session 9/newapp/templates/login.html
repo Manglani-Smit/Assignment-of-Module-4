@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Login - RestaurantApp{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-5">
+        <div class="card shadow-sm border-0 rounded-3 p-4">
+            <h3 class="fw-bold text-center mb-3">Login</h3>
+
+            {% if msg %}
+                <div class="alert alert-danger py-2 text-center" role="alert">
+                    {{ msg }}
+                </div>
+            {% endif %}
+
+            <form action="{% url 'login' %}" method="post">
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Email</label>
+                    <input type="email" name="email" class="form-control" placeholder="Enter email" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Password</label>
+                    <input type="password" name="password" class="form-control" placeholder="Enter password" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold">Login</button>
+
+                <div class="d-flex justify-content-between mt-3 small">
+                    <a href="{% url 'forgot_password' %}" class="text-decoration-none">Forgot Password?</a>
+                    <a href="{% url 'signup' %}" class="text-decoration-none">Create Account</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

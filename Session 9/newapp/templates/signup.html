@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title %}Sign Up - RestaurantApp{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-sm border-0 rounded-3 p-4">
+            <h3 class="fw-bold text-center mb-3">Sign Up</h3>
+
+            {% if msg %}
+                <div class="alert alert-info py-2 text-center" role="alert">
+                    {{ msg }}
+                </div>
+            {% endif %}
+
+            <form action="{% url 'signup' %}" method="post">
+                {% csrf_token %}
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-semibold">First Name</label>
+                        <input type="text" name="fname" class="form-control" placeholder="First Name" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-semibold">Last Name</label>
+                        <input type="text" name="lname" class="form-control" placeholder="Last Name" required>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Email</label>
+                    <input type="email" name="email" class="form-control" placeholder="Enter email" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Mobile</label>
+                    <input type="tel" name="mobile" maxlength="10" class="form-control" placeholder="10 digit mobile" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Address</label>
+                    <textarea name="address" class="form-control" rows="2" placeholder="Address"></textarea>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-semibold">Password</label>
+                        <input type="password" name="password" class="form-control" placeholder="Password" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-semibold">Confirm Password</label>
+                        <input type="password" name="cpassword" class="form-control" placeholder="Confirm Password" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold">Register</button>
+
+                <div class="text-center mt-3 small">
+                    Already have an account? <a href="{% url 'login' %}">Login</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

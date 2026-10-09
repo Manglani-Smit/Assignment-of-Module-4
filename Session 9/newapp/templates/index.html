@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - RestaurantApp{% endblock %}
+
+{% block content %}
+<div class="p-5 mb-4 bg-white rounded-3 shadow-sm text-center">
+    <div class="container-fluid py-4">
+        {% if request.session.fname %}
+            <h1 class="display-5 fw-bold">Welcome Back, {{ request.session.fname }}!</h1>
+            <p class="col-md-8 fs-5 mx-auto text-muted">Let's Know About You</p>
+        {% else %}
+            <h1 class="display-5 fw-bold">Welcome to Our Project</h1>
+            <p class="col-md-8 fs-5 mx-auto text-muted">Let's Get Started.</p>
+            <div class="mt-3">
+                <a href="{% url 'login' %}" class="btn btn-primary px-4 me-2">Login</a>
+                <a href="{% url 'signup' %}" class="btn btn-outline-secondary px-4">Sign Up</a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
