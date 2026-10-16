@@ -5,12 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7bef4ef2-0704-4961-892f-4ffc1cc106f3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Session 14/Screenshots of Output/Q1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Session 14/Screenshots of Output/Q2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Session 14/Screenshots of Output/Q3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Session 14/Screenshots of Output/Q4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Session 14/Screenshots of Output/Q5_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Session 14/Screenshots of Output/Q5_2.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -28,7 +22,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/Session 13" />
   </component>
   <component name="McpProjectServerCommands">
     <commands />
@@ -128,6 +122,11 @@
           <url>file://$PROJECT_DIR$/Session 9/newapp/views.py</url>
           <line>67</line>
           <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Session 13/newproject/urls.py</url>
+          <line>16</line>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BookMyShow Watch Later</title>
+</head>
+<body>
+    <h2>Watch Later Movies</h2>
+    <div id="msg" style="color: green;"></div>
+
+    <ul id="movie-list">
+        <li id="movie-1">
+            KGF Chapter 2
+            <button onclick="deleteMovie(1, 'KGF Chapter 2')">Delete</button>
+        </li>
+        <li id="movie-2">
+            Jawan
+            <button onclick="deleteMovie(2, 'Jawan')">Delete</button>
+        </li>
+    </ul>
+
+    <script>
+        function deleteMovie(id, title) {
+            fetch('https://jsonplaceholder.typicode.com/posts/' + id, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ movieId: id })
+            })
+            .then(res => {
+                document.getElementById('movie-' + id).remove();
+                document.getElementById('msg').innerText = title + ' removed successfully from Watch Later!';
+            });
+        }
+    </script>
+</body>
+</html>

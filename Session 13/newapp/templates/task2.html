@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flipkart Wishlist</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background-color: #f1f3f6;
+        }
+        .wishlist-container {
+            max-width: 500px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .item-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .btn-remove {
+            background-color: #fb641b;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .btn-remove:hover {
+            background-color: #e05310;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wishlist-container">
+        <h2>My Wishlist</h2>
+
+        <div id="item-101" class="item-card">
+            <span>boAt Rockerz Headphones - ₹1,499</span>
+            <button class="btn-remove" onclick="removeFromWishlist(101)">Remove from Wishlist</button>
+        </div>
+
+        <div id="item-102" class="item-card">
+            <span>Logitech Wireless Mouse - ₹599</span>
+            <button class="btn-remove" onclick="removeFromWishlist(102)">Remove from Wishlist</button>
+        </div>
+
+        <div id="item-103" class="item-card">
+            <span>SanDisk 64GB Pen Drive - ₹399</span>
+            <button class="btn-remove" onclick="removeFromWishlist(103)">Remove from Wishlist</button>
+        </div>
+    </div>
+
+    <script>
+        function removeFromWishlist(id) {
+            fetch('/remove-wishlist/' + id + '/', {
+                method: 'DELETE'
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    // UI se element remove ho jayega bina reload hue
+                    document.getElementById('item-' + id).remove();
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>

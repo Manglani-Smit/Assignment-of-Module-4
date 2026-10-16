@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wishlist</title>
+</head>
+<body>
+    <h2>My Wishlist</h2>
+
+    <div id="item-101">
+        <span>Boat Headphones - Rs. 1499</span>
+        <button onclick="removeFromWishlist(101)">Remove from Wishlist</button>
+    </div>
+
+    <div id="item-102">
+        <span>Wireless Mouse - Rs. 499</span>
+        <button onclick="removeFromWishlist(102)">Remove from Wishlist</button>
+    </div>
+
+    <script>
+        function removeFromWishlist(id) {
+            fetch('/remove-wishlist/' + id + '/', {
+                method: 'DELETE'
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    document.getElementById('item-' + id).remove();
+                }
+            });
+        }
+    </script>
+</body>
+</html>

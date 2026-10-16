@@ -1,0 +1,36 @@
+1. Issue Identified:
+The fetch() DELETE request was successfully sending the request to the backend,
+but inside the JavaScript .then() promise callback,
+there was no DOM manipulation code to remove the HTML element.
+Since AJAX does not reload the page, the deleted playlist kept showing on the screen until a manual refresh.
+
+2 Buggy code :
+
+function deletePlaylist(playlistId) {
+    fetch('/api/playlist/' + playlistId + '/', {
+        method: 'DELETE'
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Issue: Element is not removed from DOM
+        console.log("Deleted successfully");
+    });
+}
+
+3 Fixed Code :
+
+function deletePlaylist(playlistId) {
+    fetch('/api/playlist/' + playlistId + '/', {
+        method: 'DELETE'
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            // Fix: Removing the playlist element from DOM
+            const playlistElement = document.getElementById('playlist-' + playlistId);
+            if (playlistElement) {
+                playlistElement.remove();
+            }
+        }
+    });
+}

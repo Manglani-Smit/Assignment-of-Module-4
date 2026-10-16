@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Music Playlist Debug</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background-color: #f7f9fa;
+        }
+        .playlist-container {
+            max-width: 500px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .playlist-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .btn-delete {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .btn-delete:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="playlist-container">
+        <h2>My Playlists</h2>
+
+        <div id="playlist-1" class="playlist-card">
+            <span>Gym & Workout Hits</span>
+            <button class="btn-delete" onclick="deletePlaylist(1)">Delete</button>
+        </div>
+
+        <div id="playlist-2" class="playlist-card">
+            <span>Late Night Chill</span>
+            <button class="btn-delete" onclick="deletePlaylist(2)">Delete</button>
+        </div>
+
+        <div id="playlist-3" class="playlist-card">
+            <span>Lo-Fi Beats</span>
+            <button class="btn-delete" onclick="deletePlaylist(3)">Delete</button>
+        </div>
+    </div>
+
+    <script>
+        function deletePlaylist(playlistId) {
+            fetch('/api/playlist/' + playlistId + '/', {
+                method: 'DELETE'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    // Fix: DOM se playlist element ko remove kiya
+                    const playlistElement = document.getElementById('playlist-' + playlistId);
+                    if (playlistElement) {
+                        playlistElement.remove();
+                    }
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
