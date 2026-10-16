@@ -5,6 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7bef4ef2-0704-4961-892f-4ffc1cc106f3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Session 15/core/templates/buyer_dashboard.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Session 15/core/templates/movie_reviews.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Session 15/core/templates/my_orders.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Session 15/core/templates/playlist.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Session 15/core/templates/post_product.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Session 15/core/templates/seller_dashboard.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Session 15/core/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -22,7 +29,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/Session 13" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="McpProjectServerCommands">
     <commands />
@@ -59,6 +66,7 @@
       <recent name="C:\Assignment Module 4\Session 11\newapp\templates" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Assignment Module 4\Session 15\newapp\templates" />
       <recent name="C:\Assignment Module 4" />
       <recent name="C:\Assignment Module 4\Session 1" />
     </key>

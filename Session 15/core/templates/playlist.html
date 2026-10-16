@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Playlists - Spotify Admin</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 30px; background: #121212; color: white; }
+        .card { background: #181818; padding: 15px; margin: 10px 0; border-radius: 8px; border-left: 4px solid #1db954; }
+    </style>
+</head>
+<body>
+    <h1 style="color: #1db954;">Spotify Admin Playlists Panel</h1>
+    <p>Only Admin Group Of Users Can Access This Page</p>
+
+    {% for pl in playlists %}
+        <div class="card">
+            <h3>{{ pl.playlist_name }}</h3>
+            <p>Total Tracks: {{ pl.total_songs }}</p>
+            <small>Created by: {{ pl.user.fname }} on {{ pl.created_date }}</small>
+        </div>
+    {% empty %}
+        <p>No playlists found.</p>
+    {% endfor %}
+</body>
+</html>

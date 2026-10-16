@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie Reviews</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 30px; }
+        .review-card { border-bottom: 1px solid #ddd; padding: 10px 0; }
+        .critic-badge { color: red; font-weight: bold; }
+        .add-box { background: #f1f1f1; padding: 15px; margin-bottom: 25px; width: 400px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h2>Movie Reviews Corner</h2>
+    <p>Logged in as: <strong>{{ user.fname }}</strong> (Role: {{ user.group_name }})</p>
+
+    <!-- Sirf MovieCritic ko add form dikhega -->
+    {% if is_critic %}
+        <div class="add-box">
+            <h3>Add a Movie Review (Critic Only)</h3>
+            <form method="POST">
+                {% csrf_token %}
+                <input type="text" name="movie_name" placeholder="Movie Name" required style="width: 100%; margin-bottom: 8px;"><br>
+                <textarea name="review_text" placeholder="Write your review here..." required style="width: 100%; margin-bottom: 8px;"></textarea><br>
+                <input type="number" name="rating" min="1" max="5" placeholder="Rating (1-5)" required style="width: 100%; margin-bottom: 8px;"><br>
+                <button type="submit">Submit Review</button>
+            </form>
+        </div>
+    {% else %}
+        <p class="critic-badge">Note: You are logged in as MovieFan. You can only read reviews.</p>
+    {% endif %}
+
+    <hr>
+    <h3>All Reviews:</h3>
+    {% for review in reviews %}
+        <div class="review-card">
+            <h4>{{ review.movie_name }} - {{ review.rating }}/5 ★</h4>
+            <p>"{{ review.review_text }}"</p>
+            <small>Reviewed by: {{ review.user.fname }} {{ review.user.lname }}</small>
+        </div>
+    {% empty %}
+        <p>No reviews added yet.</p>
+    {% endfor %}
+</body>
+</html>

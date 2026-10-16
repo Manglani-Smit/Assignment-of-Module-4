@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Orders - Zomato Style</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 30px; background-color: #f8f9fa; }
+        .order-card { background: white; padding: 15px; margin-bottom: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .price { color: green; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h2>Welcome, {{ user.fname }}! Here are your orders:</h2>
+    <hr>
+
+    {% if orders %}
+        {% for order in orders %}
+            <div class="order-card">
+                <h3>Restaurant: {{ order.restaurant_name }}</h3>
+                <p><strong>Items:</strong> {{ order.items }}</p>
+                <p class="price">Total Amount: ₹{{ order.total_amount }}</p>
+                <small>Ordered on: {{ order.order_date }}</small>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>Aapne abhi tak koi order place nahi kiya hai.</p>
+    {% endif %}
+</body>
+</html>
