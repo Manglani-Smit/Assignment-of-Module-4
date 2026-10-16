@@ -5,11 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7bef4ef2-0704-4961-892f-4ffc1cc106f3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Session 12/newapp/templates/product_add.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Session 12/newapp/templates/product_confirm_delete.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Session 12/newapp/templates/product_form.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Session 12/newapp/templates/product_list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Session 12/newapp/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Session 14/Screenshots of Output/Q1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Session 14/Screenshots of Output/Q2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Session 14/Screenshots of Output/Q3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Session 14/Screenshots of Output/Q4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Session 14/Screenshots of Output/Q5_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Session 14/Screenshots of Output/Q5_2.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
