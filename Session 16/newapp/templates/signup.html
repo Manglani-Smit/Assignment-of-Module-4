@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register - Custom User</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .box { width: 320px; padding: 20px; border: 1px solid #ddd; border-radius: 6px; }
+        input, button { width: 100%; padding: 8px; margin-bottom: 10px; box-sizing: border-box; }
+        button { background-color: #007bff; color: white; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <a href="{% url 'home' %}">&larr; Back to Home</a>
+        <h2>User Registration</h2>
+        {% if msg %}<p style="color: blue; font-weight: bold; font-size: 14px;">{{ msg }}</p>{% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+            <label>First Name:</label>
+            <input type="text" name="fname" required>
+
+            <label>Last Name:</label>
+            <input type="text" name="lname" required>
+
+            <label>Email:</label>
+            <input type="email" name="email" required>
+
+            <label>Mobile Number:</label>
+            <input type="text" name="mobile" maxlength="10" required>
+
+            <label>Password:</label>
+            <input type="password" name="password" required>
+
+            <label>Confirm Password:</label>
+            <input type="password" name="cpassword" required>
+
+            <button type="submit">Register & Send Email</button>
+        </form>
+    </div>
+</body>
+</html>

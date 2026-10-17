@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Model OTP Verification</title>
+    <style>body { font-family: Arial, sans-serif; margin: 40px; }</style>
+</head>
+<body>
+    <h2>Model-Backed OTP Verification</h2>
+    {% if msg %}
+        <p style="color: {% if status %}green{% else %}red{% endif %}; font-weight: bold;">{{ msg }}</p>
+    {% endif %}
+
+    {% if not status %}
+    <form method="POST" action="{% url 'verify_stored_otp' %}">
+        {% csrf_token %}
+        <input type="hidden" name="mobile" value="{{ mobile }}">
+        <label>Enter OTP:</label><br>
+        <input type="text" name="otp" required><br><br>
+        <button type="submit">Verify Stored OTP</button>
+    </form>
+    {% endif %}
+</body>
+</html>

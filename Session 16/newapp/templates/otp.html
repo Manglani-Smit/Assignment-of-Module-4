@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Verify OTP</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .box { width: 320px; padding: 20px; border: 1px solid #ddd; border-radius: 6px; }
+        input, button { width: 100%; padding: 8px; margin-bottom: 12px; box-sizing: border-box; }
+        button { background-color: #28a745; color: white; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>Enter OTP</h2>
+        <p>Humne aapke mobile number par 4-digit ka OTP bheja hai.</p>
+        {% if msg %}
+            <p style="color: red; font-size: 14px;">{{ msg }}</p>
+        {% endif %}
+        <form method="POST" action="{% url 'verify_otp' %}">
+            {% csrf_token %}
+            <label>OTP:</label>
+            <input type="text" name="otp" maxlength="4" placeholder="Enter OTP" required>
+            <button type="submit">Verify OTP</button>
+        </form>
+    </div>
+</body>
+</html>
