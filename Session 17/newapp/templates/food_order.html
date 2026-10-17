@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Zomato Food Order</title>
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body style="font-family: Arial; margin: 40px;">
+    <h2>Zomato Order Checkout</h2>
+    <p>Hello, <strong>{{ user.fname }}</strong> ({{ user.mobile }})</p>
+    <p>Delivery Address: {{ user.address }}</p>
+    <hr>
+    <h3>Dish: {{ dish.name }}</h3>
+    <p>{{ dish.description }}</p>
+    <h4>Total Price: ₹{{ net_price }}</h4>
+
+    <button id="checkout-button" style="background-color: #cb202d; color: white; padding: 10px 20px; border: none; font-size: 16px; cursor: pointer;">
+        Pay Now
+    </button>
+
+    <script type="text/javascript">
+    var stripe = Stripe('pk_test_51MshH6SJuXwPfjjrrgxJ5tubbOgYAhRrqNcd4RDUSq1peWpIMZrjhIiTncSUWO9u6byeDf4KxdZPkFD4hU55mVOg00aRL5RT8x');
+    var checkoutButton = document.getElementById('checkout-button');
+
+    checkoutButton.addEventListener('click', function() {
+        fetch('/create-checkout-session/', {
+            method: 'POST',
+            headers:{
+                'Accept': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest',
+            },
+            body: JSON.stringify({'post_data':'{{net_price}}'})
+        })
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(session) {
+            return stripe.redirectToCheckout({ sessionId: session.id });
+        })
+        .then(function(result) {
+            if (result.error) {
+                alert(result.error.message);
+            }
+        })
+        .catch(function(error) {
+            console.error('Error:', error);
+        });
+    });
+    </script>
+</body>
+</html>

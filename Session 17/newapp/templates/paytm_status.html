@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head><title>Payment Status</title></head>
+<body style="font-family: Arial; margin: 40px;">
+    <h2>Payment Confirmation</h2>
+    <p>Order ID: <strong>{{ order_id }}</strong></p>
+    <p>Status: <strong>{{ status }}</strong></p>
+    <a href="{% url 'pay_ticket' %}">Book Another Ticket</a>
+</body>
+</html>

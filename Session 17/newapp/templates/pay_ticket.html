@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head><title>IPL Match Ticket Booking</title></head>
+<body style="font-family: Arial; margin: 40px;">
+    <h2>Book IPL Match Tickets</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <label>Full Name:</label><br>
+        <input type="text" name="name" required><br><br>
+        <label>Email Address:</label><br>
+        <input type="email" name="email" required><br><br>
+        <label>Ticket Amount (₹):</label><br>
+        <input type="number" name="amount" value="1500" required><br><br>
+        <button type="submit">Proceed with Paytm</button>
+    </form>
+</body>
+</html>

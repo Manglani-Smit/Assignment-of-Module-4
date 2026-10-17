@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head><title>Order Placed Successfully</title></head>
+<body style="font-family: Arial; margin: 40px;">
+    <h2 style="color: green;">Payment Successful!</h2>
+    <p>Thank you <strong>{{ user.fname }}</strong>, your order #{{ order_id }} has been placed.</p>
+    <p>Total Paid: ₹{{ total_amount }}</p>
+    <hr>
+    <h3>Order Summary:</h3>
+    <ul>
+        {% for cart in carts %}
+            <li>{{ cart.product.name }} (Qty: {{ cart.quantity }}) - ₹{{ cart.total_price }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'food_order' %}">Back to Food Menu</a>
+</body>
+</html>

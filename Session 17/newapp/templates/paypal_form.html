@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head><title>Redirecting to PayPal Sandbox...</title></head>
+<body style="font-family: Arial; margin: 40px;">
+    <h3>Proceeding to PayPal Sandbox...</h3>
+    <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+        <input type="hidden" name="cmd" value="_xclick">
+        <input type="hidden" name="business" value="{{ paypal_dict.business }}">
+        <input type="hidden" name="item_name" value="{{ paypal_dict.item_name }}">
+        <input type="hidden" name="invoice" value="{{ paypal_dict.invoice }}">
+        <input type="hidden" name="amount" value="{{ paypal_dict.amount }}">
+        <input type="hidden" name="currency_code" value="{{ paypal_dict.currency_code }}">
+        <input type="hidden" name="return" value="{{ paypal_dict.return_url }}">
+        <input type="hidden" name="cancel_return" value="{{ paypal_dict.cancel_url }}">
+        <button type="submit" style="background: #ffc439; padding: 10px 20px; border: none; font-weight: bold; cursor: pointer;">
+            Pay with PayPal Sandbox
+        </button>
+    </form>
+</body>
+</html>
