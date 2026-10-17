@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flipkart Pickup Points</title>
+</head>
+<body style="font-family: Arial; margin: 30px;">
+    <h2>Find Nearest Flipkart Pickup Points</h2>
+    <form method="GET">
+        <input type="text" name="address" placeholder="Enter your location (e.g. Navrangpura)" value="{{ user_address }}" style="width: 350px; padding: 6px;">
+        <button type="submit" style="padding: 6px 12px;">Find Nearest</button>
+    </form>
+
+    {% if results %}
+        <h3>Sorted by Distance:</h3>
+        <table border="1" cellpadding="8" cellspacing="0">
+            <tr>
+                <th>Hub Name</th>
+                <th>Address</th>
+                <th>Distance (KM)</th>
+            </tr>
+            {% for item in results %}
+            <tr>
+                <td>{{ item.name }}</td>
+                <td>{{ item.address }}</td>
+                <td>{{ item.distance }} km</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% elif user_address %}
+        <p style="color: red;">Could not determine coordinates for the given address.</p>
+    {% endif %}
+</body>
+</html>

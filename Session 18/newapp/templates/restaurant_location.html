@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Restaurant Location</title>
+</head>
+<body style="font-family: Arial; margin: 30px;">
+    <h2>Search Restaurant Location</h2>
+    <form method="GET">
+        <input type="text" name="address" value="{{ address }}" style="width: 320px; padding: 7px;">
+        <button type="submit" style="padding: 7px 14px;">Show Location</button>
+    </form>
+
+    {% if lat and lng %}
+        <p><strong>Coordinates:</strong> Latitude: {{ lat }}, Longitude: {{ lng }}</p>
+
+        <!-- Free Google Maps Embed without API key -->
+        <iframe
+            width="650"
+            height="400"
+            style="border:0; border-radius: 8px;"
+            loading="lazy"
+            src="https://maps.google.com/maps?q={{ lat }},{{ lng }}&hl=en&z=15&output=embed">
+        </iframe>
+
+        <h3>Cafes within 3 KM (Haversine Formula):</h3>
+        {% if nearby_cafes %}
+            <ul>
+                {% for cafe in nearby_cafes %}
+                    <li><strong>{{ cafe.name }}</strong> — {{ cafe.distance }} km away</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No cafes found within 3 km.</p>
+        {% endif %}
+    {% else %}
+        <p style="color:red;">Location coordinates could not be retrieved.</p>
+    {% endif %}
+</body>
+</html>
