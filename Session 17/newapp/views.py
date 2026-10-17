@@ -8,61 +8,62 @@ from django.conf import settings
 from .models import User, Product, Cart, IPLTicketOrder
 
 # Stripe API Key
-stripe.api_key = 'sk_test_placeholder_key'  # Yahan apni Stripe Secret Key dalein
+stripe.api_key = settings.STRIPE_SECRET_KEY  # Yahan apni Stripe Secret Key dalein
 
 
+def index(request):
+    return render(request,'index.html')
 # ------------------ AUTHENTICATION (SIGNUP / LOGIN / LOGOUT) ------------------
 def signup(request):
-    msg = ""
-    if request.method == 'POST':
-        fname = request.POST.get('fname')
-        lname = request.POST.get('lname')
-        email = request.POST.get('email')
-        mobile = request.POST.get('mobile')
-        address = request.POST.get('address')
-        password = request.POST.get('password')
-
-        if User.objects.filter(email=email).exists():
-            msg = "Email already registered!"
-        else:
-            User.objects.create(
-                fname=fname,
-                lname=lname,
-                email=email,
-                mobile=mobile,
-                address=address,
-                password=password
-            )
-            return redirect('login')
-
-    return render(request, 'signup.html', {'msg': msg})
+    if request.method == "POST":
+        try:
+            user=User.objects.get(email=request.POST['email'])
+            msg="Email already exist"
+            return render(request, 'signup.html',{'msg':msg})
+        except:
+            if request.POST['password'] == request.POST['cpassword']:
+                User.objects.create(
+                    fname=request.POST['fname'],
+                    lname=request.POST['lname'],
+                    email=request.POST['email'],
+                    mobile=request.POST['mobile'],
+                    address=request.POST['address'],
+                    password=request.POST['password'],
+                )
+                msg="Signup Successful"
+                return render(request, 'signup.html', {'msg': msg})
+            else:
+                msg="Password did not match"
+                return render(request, 'signup.html', {'msg': msg})
+    else:
+        return render(request,'signup.html')
 
 
 def user_login(request):
-    msg = ""
-    if request.method == 'POST':
-        email = request.POST.get('email')
-        password = request.POST.get('password')
-
-        user = User.objects.filter(email=email, password=password).first()
-        if user:
-            request.session['email'] = user.email
-            request.session['fname'] = user.fname
-            return redirect('food_order')
+        if request.method == "POST":
+            try:
+                user = User.objects.get(email=request.POST['email'])
+                if user.password == request.POST['password']:
+                    request.session['email'] = user.email
+                    request.session['fname'] = user.fname
+                    return redirect('index')
+                else:
+                    msg = "Incorrect Credentials"
+                    return render(request, 'login.html', {'msg': msg})
+            except:
+                msg = "Email does not exist"
+                return render(request, 'login.html', {'msg': msg})
         else:
-            msg = "Invalid Email or Password!"
-
-    return render(request, 'login.html', {'msg': msg})
-
-
+            return render(request, 'login.html')
 def user_logout(request):
-    request.session.flush()
-    return redirect('login')
+    try:
+        del request.session['email']
+        del request.session['fname']
+        return render(request, 'login.html')
+    except:
+        return render(request, 'login.html')
 
-
-# ------------------ Q1, Q2, Q3: IPL TICKET & PAYTM GATEWAY ------------------
 def pay_ticket(request):
-    # Q1: /pay form for IPL tickets
     if request.method == 'POST':
         name = request.POST.get('name')
         email = request.POST.get('email')
@@ -102,12 +103,12 @@ def payment_callback(request):
             if ticket:
                 ticket.status = 'Success'
                 ticket.save()
-            return render(request, 'payment_status.html', {'status': 'Success', 'order_id': order_id})
+            return render(request, 'paytm_status.html', {'status': 'Success', 'order_id': order_id})
         else:
             if ticket:
                 ticket.status = 'Failed'
                 ticket.save()
-            return render(request, 'payment_status.html', {'status': 'Failed', 'order_id': order_id})
+            return render(request, 'paytm_status.html', {'status': 'Failed', 'order_id': order_id})
 
     return redirect('pay_ticket')
 
@@ -251,4 +252,4 @@ def paypal_ticket_pay(request):
 
 
 def paypal_return(request):
-    return render(request, 'payment_status.html', {'status': 'Success (PayPal)', 'order_id': 'Verified'})
+    return render(request, 'paytm_status.html', {'status': 'Success (PayPal)', 'order_id': 'Verified'})
