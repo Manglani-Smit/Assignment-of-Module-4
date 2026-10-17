@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ playlist.title }} - Details</title>
+</head>
+<body style="font-family: Arial, sans-serif; margin: 40px;">
+    <a href="{% url 'playlist_list' %}">&larr; Back to Playlists</a>
+    <hr>
+    <h1>{{ playlist.title }}</h1>
+    <p><strong>Genre:</strong> {{ playlist.genre }}</p>
+    {% if playlist.cover_image %}
+        <img src="{{ playlist.cover_image.url }}" alt="{{ playlist.title }}" style="width: 320px; border-radius: 8px;">
+    {% endif %}
+    <p style="margin-top: 15px;"><strong>Description:</strong></p>
+    <p>{{ playlist.description|linebreaks }}</p>
+</body>
+</html>

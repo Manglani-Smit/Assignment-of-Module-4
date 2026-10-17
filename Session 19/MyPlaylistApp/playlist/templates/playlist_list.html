@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MyPlaylistApp - Playlists</title>
+</head>
+<body style="font-family: Arial, sans-serif; margin: 40px;">
+    <h1>All Playlists</h1>
+    <a href="/admin/playlist/playlist/add/" target="_blank">+ Add New Playlist in Admin</a>
+    <hr>
+    <div style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
+        {% for p in playlists %}
+            <div style="border: 1px solid #ddd; padding: 15px; border-radius: 8px; width: 220px;">
+                {% if p.cover_image %}
+                    <img src="{{ p.cover_image.url }}" alt="{{ p.title }}" style="width: 100%; height: 160px; object-fit: cover; border-radius: 4px;">
+                {% else %}
+                    <div style="width: 100%; height: 160px; background: #eee; display: flex; align-items: center; justify-content: center; border-radius: 4px;">No Cover</div>
+                {% endif %}
+                <h3>{{ p.title }}</h3>
+                <p><strong>Genre:</strong> {{ p.genre }}</p>
+                <a href="{% url 'playlist_detail' p.pk %}">View Details &rarr;</a>
+            </div>
+        {% empty %}
+            <p>No playlists found. Log into <a href="/admin/">admin</a> to add one.</p>
+        {% endfor %}
+    </div>
+</body>
+</html>
