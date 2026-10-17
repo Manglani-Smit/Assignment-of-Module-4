@@ -25,6 +25,12 @@
 **/media/
 **/*.log
 
+# Environment variables & secret API keys
+Session 16/.env
+.env.*
+*.env
+local_settings.py
+
 # OS generated files
 .DS_Store
 Thumbs.db

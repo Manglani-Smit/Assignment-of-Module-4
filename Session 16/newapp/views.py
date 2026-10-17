@@ -3,11 +3,13 @@ from django.contrib.auth import logout
 from .models import User, PhoneOTP
 import random
 import requests
+import os
 
 # ----------------- API KEYS -----------------
-MAILGUN_API_KEY = "e71a5bdc2e3442e4920c350b786ccd3a-56f8c44f-60594ffa"
-MAILGUN_DOMAIN = "sandboxd39c41416e8240d08efe481cbd232800.mailgun.org"
-FAST2SMS_API_KEY = "7Xhtrh9eWXBqVIUWzDs4Pgn6WuRFYJuJjlX1aZi6t9y3xEEPutANp1xHUMkx"
+
+MAILGUN_API_KEY = os.getenv('MAILGUN_API_KEY')
+MAILGUN_DOMAIN = os.getenv('MAILGUN_DOMAIN')
+FAST2SMS_API_KEY = os.getenv('FAST2SMS_API_KEY')
 # ---------------------------------------------
 
 def home(request):
