@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cab Booking - Pickup Location</title>
+    <!-- Leaflet Map CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <!-- Leaflet Map JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body style="font-family: Arial, sans-serif; margin: 30px; background-color: #f7f9fa; line-height: 1.5;">
+
+    <a href="{% url 'home_dashboard' %}" style="text-decoration: none; color: #ffbc00; font-weight: bold; background: #222; padding: 6px 12px; border-radius: 4px;">&larr; Back to Dashboard</a>
+
+    <h2 style="color: #222; margin-top: 20px;">🚖 Cab Booking - Select Pickup Location</h2>
+    <p style="color: #555;">Click anywhere on the map to set your pickup location, or allow browser location access.</p>
+
+    <div style="background: #ffffff; padding: 15px 20px; border-radius: 6px; box-shadow: 0 1px 4px rgba(0,0,0,0.1); margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+        <div>
+            <strong>Selected Pickup Coordinates:</strong>
+            <span id="coords" style="color: #007bff; font-weight: bold; margin-left: 8px;">Waiting for selection...</span>
+        </div>
+        <button onclick="getCurrentLocation()" style="padding: 8px 14px; background-color: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">
+            📍 Use Current Location
+        </button>
+    </div>
+
+    <!-- Map Container -->
+    <div id="map" style="width: 100%; height: 500px; border-radius: 8px; border: 1px solid #ccc; box-shadow: 0 2px 6px rgba(0,0,0,0.15);"></div>
+
+    <script>
+        // Default center: Ahmedabad [23.0225, 72.5714]
+        var map = L.map('map').setView([23.0225, 72.5714], 13);
+
+        // CartoDB Voyager Free Tiles Layer (No API Key required, no 403 blocks)
+        // Esri World Street Map (100% Free, No Watermark, No API Key, Never Blocked)
+        L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+            maxZoom: 19,
+            attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012'
+        }).addTo(map);
+        var pickupMarker = null;
+
+        function updateMarker(lat, lng, popupText) {
+            if (pickupMarker) {
+                map.removeLayer(pickupMarker);
+            }
+            pickupMarker = L.marker([lat, lng]).addTo(map).bindPopup(popupText).openPopup();
+            document.getElementById('coords').innerText = lat.toFixed(5) + " (Lat), " + lng.toFixed(5) + " (Lng)";
+        }
+
+        // Get user live location via browser geolocation API
+        function getCurrentLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var lat = position.coords.latitude;
+                    var lng = position.coords.longitude;
+                    map.setView([lat, lng], 15);
+                    updateMarker(lat, lng, "📍 Your Current Location (Pickup Point)");
+                }, function(error) {
+                    alert("Location access denied or unavailable. Please click on the map manually.");
+                });
+            } else {
+                alert("Geolocation is not supported by your browser.");
+            }
+        }
+
+        // Auto trigger current location on page load
+        getCurrentLocation();
+
+        // Click anywhere on map to set pickup location
+        map.on('click', function(e) {
+            var lat = e.latlng.lat;
+            var lng = e.latlng.lng;
+            updateMarker(lat, lng, "🚖 Selected Pickup Location");
+        });
+    </script>
+
+</body>
+</html>

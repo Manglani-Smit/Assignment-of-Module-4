@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flipkart Profile Management</title>
+</head>
+<body style="font-family: Arial, sans-serif; margin: 30px; background-color: #f1f3f6;">
+
+    <a href="{% url 'home_dashboard' %}" style="text-decoration: none; color: #2874f0; font-weight: bold;">&larr; Back to Dashboard</a>
+
+    <h2 style="color: #2874f0; margin-top: 15px;">Flipkart User Profile Management</h2>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div style="padding: 10px 14px; margin-bottom: 20px; border-radius: 4px; font-size: 14px; background-color: #e8f5e9; color: #2e7d32; border: 1px solid #a5d6a7;">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <div style="display: flex; gap: 30px; margin-top: 20px; flex-wrap: wrap;">
+
+        <!-- Left Side: Profile Edit Form -->
+        <div style="flex: 1; min-width: 320px; background: #ffffff; padding: 25px; border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,0.1);">
+            <h3 style="margin-top: 0; border-bottom: 2px solid #f0f0f0; padding-bottom: 10px;">Edit Profile</h3>
+
+            <form method="POST" enctype="multipart/form-data" action="{% url 'flipkart_profile' %}">
+                {% csrf_token %}
+
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; font-weight: bold; margin-bottom: 5px;">Full Name</label>
+                    <input type="text" name="name" value="{{ user.name }}" required style="width: 100%; box-sizing: border-box; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                </div>
+
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; font-weight: bold; margin-bottom: 5px;">Email Address</label>
+                    <input type="email" name="email" value="{{ user.email }}" required style="width: 100%; box-sizing: border-box; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                </div>
+
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; font-weight: bold; margin-bottom: 5px;">Delivery Address</label>
+                    <textarea name="delivery_address" rows="3" placeholder="Enter complete address..." style="width: 100%; box-sizing: border-box; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">{{ user.delivery_address }}</textarea>
+                </div>
+
+                <div style="margin-bottom: 20px;">
+                    <label style="display: block; font-weight: bold; margin-bottom: 5px;">Profile Picture</label>
+                    <input type="file" name="profile_pic" accept="image/*">
+                </div>
+
+                <button type="submit" style="padding: 10px 20px; background-color: #fb641b; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">Save Changes</button>
+            </form>
+        </div>
+
+        <!-- Right Side: Live Profile Details Preview -->
+        <div style="flex: 1; min-width: 320px; background: #ffffff; padding: 25px; border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,0.1);">
+            <h3 style="margin-top: 0; border-bottom: 2px solid #f0f0f0; padding-bottom: 10px;">Saved Profile Card</h3>
+
+            <div style="text-align: center; margin-bottom: 20px;">
+                {% if user.profile_pic %}
+                    <img src="{{ user.profile_pic.url }}" alt="Profile Pic" style="width: 120px; height: 120px; object-fit: cover; border-radius: 50%; border: 3px solid #2874f0;">
+                {% else %}
+                    <div style="width: 120px; height: 120px; border-radius: 50%; background: #e0e0e0; display: inline-flex; align-items: center; justify-content: center; color: #666; font-weight: bold;">
+                        No Image
+                    </div>
+                {% endif %}
+            </div>
+
+            <p><strong>Name:</strong> {{ user.name }}</p>
+            <p><strong>Email:</strong> {{ user.email }}</p>
+            <p><strong>Delivery Address:</strong></p>
+            <div style="background: #fafafa; padding: 10px; border-radius: 4px; border: 1px dashed #ccc;">
+                {{ user.delivery_address|default:"No delivery address saved yet." }}
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

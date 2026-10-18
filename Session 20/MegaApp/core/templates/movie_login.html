@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head><title>Movie Booking Login</title></head>
+<body style="font-family: Arial; margin: 30px;">
+    <h2>Movie Ticket App - Login (Generates 6-Digit OTP)</h2>
+    {% for message in messages %}
+        <p style="color: blue;">{{ message }}</p>
+    {% endfor %}
+    <form method="POST">
+        {% csrf_token %}
+        <p><input type="email" name="email" placeholder="Registered Email" required style="padding: 8px; width: 260px;"></p>
+        <p><input type="password" name="password" placeholder="Password" required style="padding: 8px; width: 260px;"></p>
+        <button type="submit" style="padding: 8px 16px;">Send OTP & Login</button>
+    </form>
+    <p>Don't have an account? <a href="{% url 'movie_register' %}">Register here</a></p>
+</body>
+</html>

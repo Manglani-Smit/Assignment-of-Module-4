@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head><title>Movie Dashboard</title></head>
+<body style="font-family: Arial; margin: 30px;">
+    <h2>Welcome to Movie Ticket Booking Dashboard!</h2>
+    <p>Status: <strong>Authenticated via OTP</strong></p>
+    <p>User: <strong>{{ user.name }} ({{ user.email }})</strong></p>
+    <hr>
+    <a href="{% url 'flipkart_profile' %}">Go to Flipkart Profile</a> |
+    <a href="{% url 'home_dashboard' %}">Main Dashboard</a> |
+    <a href="{% url 'user_logout' %}">Logout</a>
+</body>
+</html>

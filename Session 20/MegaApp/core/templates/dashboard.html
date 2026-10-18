@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Assessment Dashboard</title>
+</head>
+<body style="font-family: Arial, sans-serif; margin: 30px; line-height: 1.6;">
+    <h1>Python Django Final Assessment Portal</h1>
+    <p>Logged in as: <strong>{{ user.name|default:"Guest" }} {% if user %}({{ user.email }}){% endif %}</strong></p>
+    <hr>
+    <ul>
+        <li><a href="{% url 'search_restaurants' %}"><strong>Task 1:</strong> Zomato Restaurant Search (Cuisine & Location)</a></li>
+        <li><a href="{% url 'movie_login' %}"><strong>Task 2:</strong> Movie App Login & 3-Min OTP Verification</a></li>
+        <li><a href="{% url 'flipkart_profile' %}"><strong>Task 3:</strong> Flipkart Profile & Image Update</a></li>
+        <li><a href="{% url 'cab_booking_map' %}"><strong>Task 4:</strong> Cab Booking Interactive Map Pickup</a></li>
+    </ul>
+    {% if user %}
+        <p><a href="{% url 'user_logout' %}">Logout</a></p>
+    {% endif %}
+</body>
+</html>

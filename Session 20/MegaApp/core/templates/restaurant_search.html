@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zomato Restaurant Search</title>
+</head>
+<body style="font-family: Arial, sans-serif; margin: 30px; line-height: 1.6;">
+
+    <a href="{% url 'home_dashboard' %}">&larr; Back to Dashboard</a>
+
+    <h2>Zomato-Style Restaurant Search</h2>
+
+    <form method="GET" action="{% url 'search_restaurants' %}" style="margin-bottom: 25px; display: flex; gap: 10px;">
+        <input type="text" name="cuisine" placeholder="Enter Cuisine (e.g. Punjabi, Chinese)" value="{{ cuisine }}" style="padding: 8px 12px; width: 250px; border: 1px solid #ccc; border-radius: 4px;">
+        <input type="text" name="location" placeholder="Enter Location (e.g. Vastrapur, Navrangpura)" value="{{ location }}" style="padding: 8px 12px; width: 250px; border: 1px solid #ccc; border-radius: 4px;">
+        <button type="submit" style="padding: 8px 18px; background-color: #e23744; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">Search</button>
+        <a href="{% url 'search_restaurants' %}" style="padding: 8px 14px; text-decoration: none; color: #333; border: 1px solid #ccc; border-radius: 4px;">Reset</a>
+    </form>
+
+    <table border="1" cellpadding="10" cellspacing="0" width="100%" style="border-collapse: collapse; text-align: left;">
+        <thead style="background-color: #f4f4f4;">
+            <tr>
+                <th style="width: 35%;">Restaurant Name</th>
+                <th style="width: 35%;">Cuisine</th>
+                <th style="width: 30%;">Location</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for r in restaurants %}
+            <tr>
+                <td><strong>{{ r.name }}</strong></td>
+                <td>{{ r.cuisine }}</td>
+                <td>{{ r.location }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3" style="text-align: center; color: #777; padding: 20px;">
+                    No restaurants found matching your criteria.
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>
