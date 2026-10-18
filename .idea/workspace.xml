@@ -5,8 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7bef4ef2-0704-4961-892f-4ffc1cc106f3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -18,13 +16,13 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Dockerfile" />
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/Session 19/MyPlaylistApp" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="McpProjectServerCommands">
     <commands />
@@ -52,23 +50,24 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "C:/Assignment Module 4/Session 16/newapp/templates",
+    "last_opened_file_path": "C:/Assignment Module 4/Session 20",
     "to.speed.mode.migration.done": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Assignment Module 4\Session 20" />
       <recent name="C:\Assignment Module 4\Session 16\newapp\templates" />
       <recent name="C:\Assignment Module 4\Session 9\newapp\templates" />
       <recent name="C:\Assignment Module 4\Session 11\newapp" />
       <recent name="C:\Assignment Module 4\Session 11\newapp\templates" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Assignment Module 4\Session 20\MegaApp" />
       <recent name="C:\Assignment Module 4\Session 18\newapp" />
       <recent name="C:\Assignment Module 4\Session 16" />
       <recent name="C:\Assignment Module 4\Session 15\newapp\templates" />
       <recent name="C:\Assignment Module 4" />
-      <recent name="C:\Assignment Module 4\Session 1" />
     </key>
   </component>
   <component name="RunManager">
